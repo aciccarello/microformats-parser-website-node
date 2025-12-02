@@ -1,6 +1,5 @@
 const express = require("express");
 const { mf2 } = require("microformats-parser");
-const undici = require("undici");
 const pkg = require("./package.json");
 const app = express();
 const port = process.env.PORT || 9000;
@@ -28,14 +27,13 @@ app.use(express.static("public"));
 app.get("/", async (req, res) => {
   if (req.query.url) {
     const url = req.query.url;
-    const { body } = await undici.request(url, {
-      maxRedirections: 2,
+    const response = await fetch(url, {
       headers: {
         accept: "text/html, text/mf2+html",
       },
       method: "GET",
     });
-    const text = await body.text();
+    const text = await response.text();
     htmlToMf2(url, text, res);
   } else {
     res.render("index.html.ejs", {

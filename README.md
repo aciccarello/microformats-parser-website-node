@@ -46,7 +46,7 @@ http://localhost:9000
 
 ## Requirements
 
-- [Node 17](https://nodejs.org/en/blog/release/v17.0.0/)
+- [Node 24](https://nodejs.org/en/blog/release/v24.0.0/)
 - [Yarn](https://yarnpkg.com/cli/install)
 
 ## Contributions
